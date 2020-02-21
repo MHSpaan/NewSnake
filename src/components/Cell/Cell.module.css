@@ -1,0 +1,21 @@
+.cell {
+	width: 20px;
+	height: 20px;
+	border: solid 1px rgba(50, 50, 50, 0.4);
+}
+
+.cellEmpty {
+	background-color: black;
+}
+
+.cellSnakeHead {
+	background-color: green;
+}
+
+.cellSnakeBody {
+	background-color: red;
+}
+
+.cellCandy {
+	background-color: blue;
+}
