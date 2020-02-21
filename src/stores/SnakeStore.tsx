@@ -1,22 +1,23 @@
 import { createContext } from "react";
 import { observable, action } from "mobx";
 import { BOARD_WIDTH, BOARD_HEIGHT } from "../helpers";
+import { Coordinate } from "../types";
 
 class SnakeStore {
 	@observable
-	direction: { x: number; y: number } = { x: 0, y: 0 };
+	direction: Coordinate = { x: 0, y: 0 };
 
 	@observable
-	snakeHead: { x: number; y: number } = {
+	snakeHead: Coordinate = {
 		x: Math.floor(BOARD_WIDTH / 2),
 		y: Math.floor(BOARD_HEIGHT / 2),
 	};
 
 	@observable
-	snakeBody: [{ x: number; y: number }] = [{ x: 0, y: 0 }];
+	snakeBody: [Coordinate] = [{ x: 0, y: 0 }];
 
 	@action
-	moveSnakeHead: () => void = () => {
+	moveSnakeHead = () => {
 		this.snakeHead.x += this.direction.x;
 		this.snakeHead.y += this.direction.y;
 		this.updateBody();
@@ -28,11 +29,11 @@ class SnakeStore {
 	};
 
 	@action
-	getCandy: (pos: { x: number; y: number }) => void = pos => {
+	getCandy = (pos: Coordinate) => {
 		this.addBodySegment(pos);
 	};
 
-	private addBodySegment: (pos: { x: number; y: number }) => void = pos => {
+	private addBodySegment = (pos: Coordinate) => {
 		this.snakeBody.unshift({ x: pos.x, y: pos.y });
 	};
 }
