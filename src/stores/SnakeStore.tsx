@@ -22,7 +22,7 @@ class SnakeStore {
 		this.updateBody();
 	};
 
-	updateBody: () => void = () => {
+	private updateBody: () => void = () => {
 		this.snakeBody.pop();
 		this.addBodySegment(this.snakeHead);
 	};
@@ -32,7 +32,7 @@ class SnakeStore {
 		this.addBodySegment(pos);
 	};
 
-	addBodySegment: (pos: { x: number; y: number }) => void = pos => {
+	private addBodySegment: (pos: { x: number; y: number }) => void = pos => {
 		this.snakeBody.unshift({ x: pos.x, y: pos.y });
 	};
 }

@@ -1,11 +1,5 @@
 import styles from "./Board.module.css";
-import React, {
-	FC,
-	useContext,
-	KeyboardEvent,
-	useState,
-	useEffect,
-} from "react";
+import React, { FC, useContext, KeyboardEvent, useState } from "react";
 import { BoardStoreContext } from "../../stores/BoardStore";
 import { SnakeStoreContext } from "../../stores/SnakeStore";
 import { Cell } from "../Cell/Cell";
