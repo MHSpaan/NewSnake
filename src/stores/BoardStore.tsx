@@ -1,6 +1,6 @@
 import { observable, action } from "mobx";
 import { BOARD_HEIGHT, BOARD_WIDTH } from "../helpers";
-import { createContext, useEffect, useContext } from "react";
+import { createContext} from "react";
 import { Coordinate } from "../types";
 
 class BoardStore {
@@ -10,9 +10,12 @@ class BoardStore {
 		.map(() => new Array(BOARD_WIDTH).fill(0));
 
 	@action
-	updateBoard: (snake: Coordinate) => void = snake => {
+	updateBoard: (snakeHead: Coordinate, snakeBody: Coordinate[]) => void = (snake, snakeBody) => {
 		console.log(snake);
-		this.board[snake.y][snake.x] = "H";
+		this.board[snake.x][snake.y] = "H";
+		snakeBody.map((coordinate) => {
+			this.board[coordinate.x][coordinate.y] = "B";
+		})
 	};
 }
 export const BoardStoreContext = createContext(new BoardStore());
