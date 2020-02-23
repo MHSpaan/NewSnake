@@ -13,29 +13,31 @@ export const Board: FC = observer(() => {
 
 	useInterval(() => {
 		snakeStore.moveSnakeHead();
+		boardStore.updateBoard(snakeStore.snakeHead);
 	}, delay);
 
 	const changeDirection = (e: KeyboardEvent) => {
 		setDelay(1000);
+		console.log(e.keyCode);
 		switch (e.keyCode) {
 			case 37:
-				if (snakeStore.direction.x !== 1) {
-					snakeStore.direction = { x: -1, y: 0 };
+				if (snakeStore.direction.x !== 1 && snakeStore.lastMove.x !== 1) {
+					snakeStore.updateDirection({ x: -1, y: 0 });
 				}
 				break;
 			case 38:
-				if (snakeStore.direction.y !== 1) {
-					snakeStore.direction = { x: 0, y: -1 };
+				if (snakeStore.direction.y !== 1 && snakeStore.lastMove.y !== 1) {
+					snakeStore.updateDirection({ x: 0, y: -1 });
 				}
 				break;
 			case 39:
-				if (snakeStore.direction.x !== -1) {
-					snakeStore.direction = { x: 1, y: 0 };
+				if (snakeStore.direction.x !== -1 && snakeStore.lastMove.x !== -1) {
+					snakeStore.updateDirection({ x: 1, y: 0 });
 				}
 				break;
 			case 40:
-				if (snakeStore.direction.y !== -1) {
-					snakeStore.direction = { x: 0, y: 1 };
+				if (snakeStore.direction.y !== -1 && snakeStore.lastMove.y !== -1) {
+					snakeStore.updateDirection({ x: 0, y: 1 });
 				}
 				break;
 		}
