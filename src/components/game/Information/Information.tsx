@@ -9,31 +9,31 @@ import { BoardStoreContext } from "../../../stores/BoardStore";
 interface InformationProps {}
 
 export const Information: FC<InformationProps> = observer(() => {
-	const gameStore = useContext(GameStoreContext);
-	const snakeStore = useContext(SnakeStoreContext);
-	const boardStore = useContext(BoardStoreContext);
+  const gameStore = useContext(GameStoreContext);
+  const snakeStore = useContext(SnakeStoreContext);
+  const boardStore = useContext(BoardStoreContext);
 
-	const restart = () => {
-		snakeStore.reset();
-		boardStore.reset();
-		gameStore.reset();
-	};
+  const restart = () => {
+    snakeStore.reset();
+    boardStore.reset();
+    gameStore.reset();
+  };
 
-	return (
-		<div
-			style={{ width: `${BOARD_WIDTH * 20}px` }}
-			className={styles.information}
-		>
-			<div className={styles.score}>
-				{gameStore.gameOver ? "Game Over" : `Score: ${gameStore.score}`}
-			</div>
-			<div
-				className={styles.score}
-				onClick={restart}
-				hidden={!gameStore.gameOver}
-			>
-				Restart
-			</div>
-		</div>
-	);
+  return (
+    <div
+      style={{ width: `${BOARD_WIDTH * 20}px` }}
+      className={styles.information}
+    >
+      <div className={styles.score}>
+        {gameStore.gameOver ? "Game Over" : `Score: ${gameStore.score}`}
+      </div>
+      <div
+        className={styles.score}
+        onClick={restart}
+        hidden={!gameStore.gameOver}
+      >
+        Restart
+      </div>
+    </div>
+  );
 });

@@ -6,10 +6,10 @@ import styles from "./Game.module.css";
 interface GameProps {}
 
 export const Game: FC<GameProps> = () => {
-	return (
-		<div className={styles.game}>
-			<Information />
-			<Board />
-		</div>
-	);
+  return (
+    <div className={styles.game}>
+      <Information />
+      <Board />
+    </div>
+  );
 };

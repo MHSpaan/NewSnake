@@ -4,7 +4,7 @@ import { configure } from "mobx";
 import { Game } from "./components/game/Game";
 
 configure({
-	enforceActions: "always",
+  enforceActions: "always",
 });
 
 ReactDOM.render(<Game />, document.getElementById("root"));
