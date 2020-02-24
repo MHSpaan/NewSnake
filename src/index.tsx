@@ -1,10 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Board } from "./components/board/Board";
 import { configure } from "mobx";
+import { Game } from "./components/game/Game";
 
 configure({
 	enforceActions: "always",
 });
 
-ReactDOM.render(<Board />, document.getElementById("root"));
+ReactDOM.render(<Game />, document.getElementById("root"));
