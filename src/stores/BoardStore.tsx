@@ -4,10 +4,15 @@ import { createContext } from "react";
 import { Coordinate } from "../types";
 
 class BoardStore {
+	@action
+	createBoard = () => {
+		return new Array(BOARD_HEIGHT)
+			.fill("0")
+			.map(() => new Array(BOARD_WIDTH).fill("0"));
+	};
+
 	@observable
-	board: Array<Array<string>> = new Array(BOARD_HEIGHT)
-		.fill("0")
-		.map(() => new Array(BOARD_WIDTH).fill("0"));
+	board: Array<Array<string>> = this.createBoard();
 
 	@action
 	updateBoard: (snakeHead: Coordinate, snakeBody: Coordinate[]) => void = (
@@ -51,6 +56,8 @@ class BoardStore {
 	candy: Coordinate = this.randomCandy();
 
 	@action
-	reset = (): void => {};
+	reset = (): void => {
+		this.board = this.createBoard();
+	};
 }
 export const BoardStoreContext = createContext(new BoardStore());
