@@ -1,5 +1,5 @@
 import styles from "./Board.module.css";
-import React, { FC, useContext, KeyboardEvent, useState } from "react";
+import React, { FC, useContext, KeyboardEvent } from "react";
 import { BoardStoreContext } from "../../stores/BoardStore";
 import { SnakeStoreContext } from "../../stores/SnakeStore";
 import { Cell } from "../Cell/Cell";
@@ -11,7 +11,6 @@ export const Board: FC = observer(() => {
   const boardStore = useContext(BoardStoreContext);
   const snakeStore = useContext(SnakeStoreContext);
   const gameStore = useContext(GameStoreContext);
-  const [delay, setDelay] = useState<number | null>(null);
 
   useInterval(() => {
     snakeStore.moveSnakeHead(
@@ -21,11 +20,11 @@ export const Board: FC = observer(() => {
       gameStore.increaseScore,
     );
     boardStore.updateBoard(snakeStore.snakeHead, snakeStore.snakeBody);
-  }, delay);
+  }, gameStore.delay);
 
   const changeDirection = (e: KeyboardEvent) => {
     if (!gameStore.gameOver) {
-      setDelay(100);
+      gameStore.setDelay();
       switch (e.keyCode) {
         case 37:
           if (snakeStore.direction.y !== 1 && snakeStore.lastMove.y !== 1) {
@@ -48,8 +47,6 @@ export const Board: FC = observer(() => {
           }
           break;
       }
-    } else {
-      setDelay(null);
     }
   };
 

@@ -1,11 +1,13 @@
 import styles from "./Cell.module.css";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 
 interface CellProps {
   cell: string;
 }
 
 export const Cell: FC<CellProps> = ({ cell }) => {
+  useEffect(() => {}, [cell]);
+
   return (
     <div
       className={`${styles.cell} ${

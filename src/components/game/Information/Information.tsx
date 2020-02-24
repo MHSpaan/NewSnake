@@ -25,7 +25,7 @@ export const Information: FC<InformationProps> = observer(() => {
       className={styles.information}
     >
       <div className={styles.score}>
-        {gameStore.gameOver ? "Game Over" : `Score: ${gameStore.score}`}
+        {gameStore.gameOver ? "Game Over" : `Level: ${gameStore.level}`}
       </div>
       <div
         className={styles.score}
